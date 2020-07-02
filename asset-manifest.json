@@ -1,0 +1,23 @@
+{
+  "files": {
+    "main.css": "/pet_the_pet/static/css/main.2be81c70.chunk.css",
+    "main.js": "/pet_the_pet/static/js/main.7ac08695.chunk.js",
+    "main.js.map": "/pet_the_pet/static/js/main.7ac08695.chunk.js.map",
+    "runtime-main.js": "/pet_the_pet/static/js/runtime-main.309ceac6.js",
+    "runtime-main.js.map": "/pet_the_pet/static/js/runtime-main.309ceac6.js.map",
+    "static/js/2.0c4872b0.chunk.js": "/pet_the_pet/static/js/2.0c4872b0.chunk.js",
+    "static/js/2.0c4872b0.chunk.js.map": "/pet_the_pet/static/js/2.0c4872b0.chunk.js.map",
+    "index.html": "/pet_the_pet/index.html",
+    "precache-manifest.f04d87646d74d98c48f65cfeb8caee23.js": "/pet_the_pet/precache-manifest.f04d87646d74d98c48f65cfeb8caee23.js",
+    "service-worker.js": "/pet_the_pet/service-worker.js",
+    "static/css/main.2be81c70.chunk.css.map": "/pet_the_pet/static/css/main.2be81c70.chunk.css.map",
+    "static/js/2.0c4872b0.chunk.js.LICENSE.txt": "/pet_the_pet/static/js/2.0c4872b0.chunk.js.LICENSE.txt",
+    "static/media/logo.png": "/pet_the_pet/static/media/logo.65043f59.png"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.309ceac6.js",
+    "static/js/2.0c4872b0.chunk.js",
+    "static/css/main.2be81c70.chunk.css",
+    "static/js/main.7ac08695.chunk.js"
+  ]
+}
