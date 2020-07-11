@@ -4,8 +4,9 @@ import { Stage, Sprite } from "@inlet/react-pixi";
 import PetTypes from "./PetTypes";
 import { randomRange } from "../util/functions";
 import heart from "../images/heart.png";
-// import song from "../music/song.mp3";
 import bg from "../images/bg.png";
+
+import Sound from "react-sound";
 
 const Game = ({ endGame, setFinalScore }: any) => {
   const [lives, changeLives] = useState(3);
@@ -31,13 +32,13 @@ const Game = ({ endGame, setFinalScore }: any) => {
   const getTimer = () => {
     const currentScore = scoreRef.current;
 
-    if (currentScore > 120) {
+    if (currentScore > 200) {
       return 500;
     }
-    if (currentScore > 100) {
+    if (currentScore > 150) {
       return 600;
     }
-    if (currentScore > 80) {
+    if (currentScore > 100) {
       return 800;
     }
 
@@ -53,12 +54,12 @@ const Game = ({ endGame, setFinalScore }: any) => {
       return 1500;
     }
 
-    return 1800;
+    return 1600;
   };
 
   const loadPet = (e: any) => {
     const limit = Math.min(
-      Math.round(scoreRef.current / 15),
+      Math.round(scoreRef.current / 20),
       PetTypes.length - 1
     );
     const index = randomRange(0, limit);
@@ -122,6 +123,12 @@ const Game = ({ endGame, setFinalScore }: any) => {
       >
         <Sprite image={bg} x={0} y={0} />
       </Stage>
+      <Sound
+        playStatus={Sound.status.PLAYING}
+        url="https://petthepet.imfast.io/bg.wav"
+        autoLoad
+        loop
+      />
     </Container>
   );
 };

@@ -18,7 +18,7 @@ const Pom = (stage: any, setScore: any, loseLife: any) => {
 
   let interval = setInterval(() => {
     if (sprite.position.x > 0) {
-      sprite.position.x -= 40;
+      sprite.position.x -= 35;
     }
     if (sprite.position.x <= 0) {
       if (stage.stage) {

@@ -67,7 +67,7 @@ const Husky = (stage: any, setScore: any, loseLife: any) => {
       stage.stage.removeChild(sprite);
       loseLife();
     }
-  }, 1500);
+  }, 1800);
 };
 
 export default Husky;

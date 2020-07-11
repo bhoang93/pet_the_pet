@@ -71,7 +71,7 @@ const Husky = (stage: any, setScore: any, loseLife: any) => {
       stage.stage.removeChild(bunnyF);
       loseLife();
     }
-  }, 2000);
+  }, 2500);
 };
 
 export default Husky;

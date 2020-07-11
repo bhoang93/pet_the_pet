@@ -43,6 +43,8 @@ function App() {
             }
           })
           .catch(console.error);
+      } else {
+        changeGameState("game");
       }
     };
 
