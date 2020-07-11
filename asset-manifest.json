@@ -1,23 +1,23 @@
 {
   "files": {
     "main.css": "/pet_the_pet/static/css/main.2be81c70.chunk.css",
-    "main.js": "/pet_the_pet/static/js/main.a5a0a949.chunk.js",
-    "main.js.map": "/pet_the_pet/static/js/main.a5a0a949.chunk.js.map",
+    "main.js": "/pet_the_pet/static/js/main.a8b30c4a.chunk.js",
+    "main.js.map": "/pet_the_pet/static/js/main.a8b30c4a.chunk.js.map",
     "runtime-main.js": "/pet_the_pet/static/js/runtime-main.309ceac6.js",
     "runtime-main.js.map": "/pet_the_pet/static/js/runtime-main.309ceac6.js.map",
-    "static/js/2.d0dae7c5.chunk.js": "/pet_the_pet/static/js/2.d0dae7c5.chunk.js",
-    "static/js/2.d0dae7c5.chunk.js.map": "/pet_the_pet/static/js/2.d0dae7c5.chunk.js.map",
+    "static/js/2.f356d56d.chunk.js": "/pet_the_pet/static/js/2.f356d56d.chunk.js",
+    "static/js/2.f356d56d.chunk.js.map": "/pet_the_pet/static/js/2.f356d56d.chunk.js.map",
     "index.html": "/pet_the_pet/index.html",
-    "precache-manifest.68ac6dca930dd1c2391ef59e75ac1640.js": "/pet_the_pet/precache-manifest.68ac6dca930dd1c2391ef59e75ac1640.js",
+    "precache-manifest.82ecd5635c00538dc676026eaad60e83.js": "/pet_the_pet/precache-manifest.82ecd5635c00538dc676026eaad60e83.js",
     "service-worker.js": "/pet_the_pet/service-worker.js",
     "static/css/main.2be81c70.chunk.css.map": "/pet_the_pet/static/css/main.2be81c70.chunk.css.map",
-    "static/js/2.d0dae7c5.chunk.js.LICENSE.txt": "/pet_the_pet/static/js/2.d0dae7c5.chunk.js.LICENSE.txt",
+    "static/js/2.f356d56d.chunk.js.LICENSE.txt": "/pet_the_pet/static/js/2.f356d56d.chunk.js.LICENSE.txt",
     "static/media/logo.png": "/pet_the_pet/static/media/logo.65043f59.png"
   },
   "entrypoints": [
     "static/js/runtime-main.309ceac6.js",
-    "static/js/2.d0dae7c5.chunk.js",
+    "static/js/2.f356d56d.chunk.js",
     "static/css/main.2be81c70.chunk.css",
-    "static/js/main.a5a0a949.chunk.js"
+    "static/js/main.a8b30c4a.chunk.js"
   ]
 }
