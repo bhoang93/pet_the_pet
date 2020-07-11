@@ -1,36 +1,41 @@
-import image from "../../images/pets/lab.png";
+import image from "../../images/pets/pom.png";
 import * as pixi from "pixi.js";
 import { randomRange, getSpriteScale, getLimit } from "../../util/functions";
 
-const Lab = (stage: any, setScore: any, loseLife: any) => {
+const Pom = (stage: any, setScore: any, loseLife: any) => {
   if (!stage.stage) return;
-  let deathTimer: any;
 
   const dog = pixi.Sprite.from(image);
   const sprite = stage.stage.addChild(dog);
-  sprite.position.x = randomRange(10, getLimit());
+  sprite.position.x = randomRange(200, getLimit());
   sprite.position.y = randomRange(10, getLimit());
   sprite.interactive = true;
   sprite.buttonMode = true;
   sprite.height = getSpriteScale();
   sprite.width = getSpriteScale();
 
+  let interval = setInterval(() => {
+    if (sprite.position.x > 0) {
+      sprite.position.x -= 30;
+    }
+    if (sprite.position.x <= 0) {
+      if (stage.stage) {
+        stage.stage.removeChild(sprite);
+        loseLife();
+        clearInterval(interval);
+      }
+    }
+  }, 100);
+
   const onClick = () => {
-    clearTimeout(deathTimer);
+    clearInterval(interval);
     stage.stage.removeChild(sprite);
     sprite.destroy();
-    setScore(1);
+    setScore(4);
   };
 
   sprite.click = onClick;
   sprite.touchstart = onClick;
-
-  deathTimer = setTimeout(() => {
-    if (stage.stage) {
-      stage.stage.removeChild(sprite);
-      loseLife();
-    }
-  }, 1000);
 };
 
-export default Lab;
+export default Pom;

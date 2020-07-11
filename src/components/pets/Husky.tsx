@@ -1,6 +1,6 @@
 import image from "../../images/pets/husky.png";
 import * as pixi from "pixi.js";
-import { randomRange } from "../../util/functions";
+import { randomRange, getSpriteScale, getLimit } from "../../util/functions";
 
 const Husky = (stage: any, setScore: any, loseLife: any) => {
   if (!stage.stage) return;
@@ -14,7 +14,7 @@ const Husky = (stage: any, setScore: any, loseLife: any) => {
   const onDragEnd = (sprite: any) => {
     sprite.dragging = false;
 
-    if (sprite.position.x <= 0 || sprite.position.y <= 0) {
+    if (sprite.position.x <= 10 || sprite.position.y <= 10) {
       clearTimeout(deathTimer);
       stage.stage.removeChild(sprite);
       sprite.destroy();
@@ -28,7 +28,7 @@ const Husky = (stage: any, setScore: any, loseLife: any) => {
       sprite.position.x = newPosition.x;
       sprite.position.y = newPosition.y;
 
-      if (sprite.position.x <= 0 || sprite.position.y <= 0) {
+      if (sprite.position.x <= 10 || sprite.position.y <= 10) {
         clearTimeout(deathTimer);
         stage.stage.removeChild(sprite);
         sprite.destroy();
@@ -39,8 +39,11 @@ const Husky = (stage: any, setScore: any, loseLife: any) => {
 
   const dog = pixi.Sprite.from(image);
   const sprite = stage.stage.addChild(dog);
-  sprite.position.x = randomRange(100, 500);
-  sprite.position.y = randomRange(100, 500);
+  sprite.position.x = randomRange(100, getLimit());
+  sprite.position.y = randomRange(100, getLimit());
+  sprite.height = getSpriteScale();
+  sprite.width = getSpriteScale();
+
   sprite.interactive = true;
   sprite.buttonMode = true;
   sprite.anchor.set(0.5);

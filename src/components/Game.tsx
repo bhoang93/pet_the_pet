@@ -10,8 +10,8 @@ import bg from "../images/bg.png";
 const Game = ({ endGame, setFinalScore }: any) => {
   const [lives, changeLives] = useState(3);
   const [score, changeScore] = useState(0);
+  const [threshold, increaseThreshold] = useState(30);
 
-  let audio: any;
   let timer: any;
 
   const scoreRef = useRef(score);
@@ -31,21 +31,21 @@ const Game = ({ endGame, setFinalScore }: any) => {
   const getTimer = () => {
     const currentScore = scoreRef.current;
 
-    if (currentScore > 60) {
+    if (currentScore > 120) {
       return 500;
     }
-    if (currentScore > 50) {
+    if (currentScore > 100) {
       return 600;
     }
-    if (currentScore > 40) {
+    if (currentScore > 80) {
       return 800;
     }
 
-    if (currentScore > 30) {
+    if (currentScore > 60) {
       return 1000;
     }
 
-    if (currentScore > 20) {
+    if (currentScore > 40) {
       return 1200;
     }
 
@@ -58,7 +58,7 @@ const Game = ({ endGame, setFinalScore }: any) => {
 
   const loadPet = (e: any) => {
     const limit = Math.min(
-      Math.round(scoreRef.current / 10),
+      Math.round(scoreRef.current / 15),
       PetTypes.length - 1
     );
     const index = randomRange(0, limit);
@@ -80,12 +80,31 @@ const Game = ({ endGame, setFinalScore }: any) => {
     }
   }, [lives]);
 
+  useEffect(() => {
+    if (scoreRef.current >= threshold) {
+      changeLives(livesRef.current + 1);
+      increaseThreshold(threshold + 30);
+    }
+  }, [scoreRef.current]);
+
   const onLoad = (e: any) => {
     loadPet(e);
-    // audio = new Audio(
-    //   "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3"
-    // );
-    // audio.play();
+  };
+
+  const getWidth = (): number => {
+    if (typeof window === "undefined") {
+      return 800;
+    }
+
+    return Math.min(window.innerWidth - 20, 800);
+  };
+
+  const getHeight = (): number => {
+    if (typeof window === "undefined") {
+      return 600;
+    }
+
+    return Math.min(window.innerHeight - 200, 600);
   };
 
   return (
@@ -96,7 +115,11 @@ const Game = ({ endGame, setFinalScore }: any) => {
           {Array(lives).fill(<img src={heart} />)}
         </HeartsContainer>
       </Hud>
-      <Stage onMount={(e: any) => onLoad(e)}>
+      <Stage
+        onMount={(e: any) => onLoad(e)}
+        width={getWidth()}
+        height={getHeight()}
+      >
         <Sprite image={bg} x={0} y={0} />
       </Stage>
     </Container>
@@ -117,6 +140,10 @@ const Hud = styled.div`
 
 const HeartsContainer = styled.div`
   display: flex;
+
+  & img {
+    height: 2rem;
+  }
 `;
 
 const Container = styled.div`

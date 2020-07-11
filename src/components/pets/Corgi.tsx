@@ -1,6 +1,6 @@
 import image from "../../images/pets/corgi.png";
 import * as pixi from "pixi.js";
-import { randomRange } from "../../util/functions";
+import { randomRange, getSpriteScale, getLimit } from "../../util/functions";
 
 const Corgi = (stage: any, setScore: any, loseLife: any) => {
   if (!stage.stage) return;
@@ -10,11 +10,15 @@ const Corgi = (stage: any, setScore: any, loseLife: any) => {
   let clicks = 0;
 
   const sprite = stage.stage.addChild(dog);
-  sprite.position.x = randomRange(0, 500);
-  sprite.position.y = randomRange(0, 500);
+  sprite.position.x = randomRange(10, getLimit());
+  sprite.position.y = randomRange(10, getLimit());
+  sprite.height = getSpriteScale();
+  sprite.width = getSpriteScale();
+
   sprite.interactive = true;
   sprite.buttonMode = true;
-  sprite.click = () => {
+
+  const onClick = () => {
     clicks++;
 
     if (clicks === 2) {
@@ -24,6 +28,9 @@ const Corgi = (stage: any, setScore: any, loseLife: any) => {
       setScore(2);
     }
   };
+
+  sprite.click = onClick;
+  sprite.touchstart = onClick;
 
   deathTimer = setTimeout(() => {
     if (stage.stage) {
