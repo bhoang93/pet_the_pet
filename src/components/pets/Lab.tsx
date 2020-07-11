@@ -5,11 +5,11 @@ import { randomRange, getSpriteScale, getLimit } from "../../util/functions";
 const Lab = (stage: any, setScore: any, loseLife: any) => {
   if (!stage.stage) return;
   let deathTimer: any;
-
+  const limit: number = getLimit();
   const dog = pixi.Sprite.from(image);
   const sprite = stage.stage.addChild(dog);
-  sprite.position.x = randomRange(10, getLimit());
-  sprite.position.y = randomRange(10, getLimit());
+  sprite.position.x = randomRange(10, limit);
+  sprite.position.y = randomRange(10, limit);
   sprite.interactive = true;
   sprite.buttonMode = true;
   sprite.height = getSpriteScale();

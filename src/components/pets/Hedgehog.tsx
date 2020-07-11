@@ -1,14 +1,13 @@
-import image from "../../images/pets/blackcat.png";
+import image from "../../images/pets/hedgehog.png";
 import * as pixi from "pixi.js";
 import { randomRange, getSpriteScale, getLimit } from "../../util/functions";
 
-const BlackCat = (stage: any, setScore: any, loseLife: any) => {
+const Hedgehog = (stage: any, setScore: any, loseLife: any) => {
   if (!stage.stage) return;
   let deathTimer: any;
-
-  const cat = pixi.Sprite.from(image);
   const limit: number = getLimit();
-  const sprite = stage.stage.addChild(cat);
+  const dog = pixi.Sprite.from(image);
+  const sprite = stage.stage.addChild(dog);
   sprite.position.x = randomRange(10, limit);
   sprite.position.y = randomRange(10, limit);
   sprite.interactive = true;
@@ -16,22 +15,25 @@ const BlackCat = (stage: any, setScore: any, loseLife: any) => {
   sprite.height = getSpriteScale();
   sprite.width = getSpriteScale();
 
-  const onClick = () => {
+  const shakeEventDidOccur = () => {
+    window.removeEventListener("shake", shakeEventDidOccur, false);
     clearTimeout(deathTimer);
     stage.stage.removeChild(sprite);
     sprite.destroy();
-    loseLife();
+    setScore(2);
   };
 
-  sprite.click = onClick;
-  sprite.touchstart = onClick;
+  if (typeof window !== "undefined") {
+    window.addEventListener("shake", shakeEventDidOccur, false);
+  }
 
   deathTimer = setTimeout(() => {
+    window.removeEventListener("shake", shakeEventDidOccur, false);
     if (stage.stage) {
       stage.stage.removeChild(sprite);
-      setScore(1);
+      loseLife();
     }
   }, 1500);
 };
 
-export default BlackCat;
+export default Hedgehog;

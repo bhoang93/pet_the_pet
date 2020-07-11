@@ -4,13 +4,49 @@ import StartScreen from "./components/StartScreen";
 import GameOver from "./components/GameOver";
 import styled from "styled-components";
 import logo from "./images/logo.png";
+import Shake from "shake.js";
 
 function App() {
   const [gameState, changeGameState] = useState("start");
   const [finalScore, setFinalScore] = useState(null);
 
+  const myShakeEvent = new Shake({
+    threshold: 5,
+  });
+
   const startGame = () => {
-    changeGameState("game");
+    const requestPermissions = () => {
+      if (typeof (DeviceMotionEvent as any).requestPermission === "function") {
+        (DeviceMotionEvent as any)
+          .requestPermission()
+          .then((permissionState) => {
+            if (permissionState === "granted") {
+              myShakeEvent.start();
+            }
+          })
+          .then(() => {
+            if (
+              typeof (DeviceOrientationEvent as any).requestPermission ===
+              "function"
+            ) {
+              (DeviceOrientationEvent as any)
+                .requestPermission()
+                .then((permissionState) => {
+                  if (permissionState === "granted") {
+                    // window.addEventListener("deviceorientation", () => {});
+                  }
+                })
+                .then(() => {
+                  changeGameState("game");
+                })
+                .catch(console.error);
+            }
+          })
+          .catch(console.error);
+      }
+    };
+
+    requestPermissions();
   };
 
   const endGame = () => {

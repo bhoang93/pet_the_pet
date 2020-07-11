@@ -10,7 +10,7 @@ import bg from "../images/bg.png";
 const Game = ({ endGame, setFinalScore }: any) => {
   const [lives, changeLives] = useState(3);
   const [score, changeScore] = useState(0);
-  const [threshold, increaseThreshold] = useState(30);
+  const [threshold, increaseThreshold] = useState(50);
 
   let timer: any;
 
@@ -83,7 +83,7 @@ const Game = ({ endGame, setFinalScore }: any) => {
   useEffect(() => {
     if (scoreRef.current >= threshold) {
       changeLives(livesRef.current + 1);
-      increaseThreshold(threshold + 30);
+      increaseThreshold(threshold + 50);
     }
   }, [scoreRef.current]);
 

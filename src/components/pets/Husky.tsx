@@ -6,6 +6,8 @@ const Husky = (stage: any, setScore: any, loseLife: any) => {
   if (!stage.stage) return;
   let deathTimer: any;
 
+  const limit: number = getLimit();
+
   const onDragStart = (event: any, sprite: any) => {
     sprite.dragging = true;
     sprite.data = event.data;
@@ -39,8 +41,8 @@ const Husky = (stage: any, setScore: any, loseLife: any) => {
 
   const dog = pixi.Sprite.from(image);
   const sprite = stage.stage.addChild(dog);
-  sprite.position.x = randomRange(100, getLimit());
-  sprite.position.y = randomRange(100, getLimit());
+  sprite.position.x = randomRange(100, limit);
+  sprite.position.y = randomRange(100, limit);
   sprite.height = getSpriteScale();
   sprite.width = getSpriteScale();
 

@@ -8,10 +8,10 @@ const Corgi = (stage: any, setScore: any, loseLife: any) => {
 
   const dog = pixi.Sprite.from(image);
   let clicks = 0;
-
+  const limit: number = getLimit();
   const sprite = stage.stage.addChild(dog);
-  sprite.position.x = randomRange(10, getLimit());
-  sprite.position.y = randomRange(10, getLimit());
+  sprite.position.x = randomRange(10, limit);
+  sprite.position.y = randomRange(10, limit);
   sprite.height = getSpriteScale();
   sprite.width = getSpriteScale();
 
